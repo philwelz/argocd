@@ -2,3 +2,4 @@ repoUrl: https://github.com/philwelz/argocd.git
 
 appRoots:
   - infra
+  - appsets

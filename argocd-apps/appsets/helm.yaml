@@ -1,0 +1,33 @@
+---
+# Source: appsets/templates/appsets.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: blue-environments
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - env: dev
+            path: "apps/blue/dev"
+          - env: stage
+            path: "apps/blue/stage"
+          - env: prod
+            path: "apps/blue/prod"
+  template:
+    metadata:
+      name: blue-{{env}}
+    spec:
+      project: appsets
+      source:
+        repoURL:  "https://github.com/philwelz/argocd.git"
+        targetRevision: main
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: blue-{{env}}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

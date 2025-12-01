@@ -1,0 +1,4 @@
+apiVersion: v2
+name: appsets
+version: 1.0.0
+description: Chart to manage ApplicationSets for Argo CD
