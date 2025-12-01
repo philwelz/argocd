@@ -1,0 +1,4 @@
+repoUrl: https://github.com/philwelz/argocd.git.git
+
+appRoots:
+  - infra

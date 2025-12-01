@@ -1,0 +1,6 @@
+repoUrl: https://github.com/philwelz/argocd.git
+
+applications:
+
+  - name: ingress-nginx
+    namespace: ingress-nginx
