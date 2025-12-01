@@ -9,7 +9,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: infra
+  project: apps
   source:
     repoURL: "{{ $.Values.repoUrl }}"
     targetRevision: HEAD
