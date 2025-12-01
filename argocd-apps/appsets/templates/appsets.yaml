@@ -10,7 +10,7 @@ spec:
         elements:
           {{- range $env := $appsets.environments }}
           - env: {{ $env }}
-            path: "apps/{{ $appsets.name }}/{{ $env }}"
+            path: "appsets/{{ $appsets.name }}/{{ $env }}"
           {{- end }}
   template:
     metadata:

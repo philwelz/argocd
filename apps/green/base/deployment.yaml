@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green
+  labels:
+    app: green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: green
+  template:
+    metadata:
+      labels:
+        app: green
+    spec:
+      containers:
+      - name: green
+        image: mcr.microsoft.com/k8se/quickstart:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "10Mi"
+          limits:
+            memory: "256Mi"

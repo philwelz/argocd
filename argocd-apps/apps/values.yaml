@@ -1,0 +1,10 @@
+repoUrl: https://github.com/philwelz/argocd.git
+
+applications:
+
+  - name: green
+    namespace: green
+    environments:
+      - dev
+      - stage
+      - prod
