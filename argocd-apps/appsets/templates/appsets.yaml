@@ -15,8 +15,6 @@ spec:
   template:
     metadata:
       name: {{ $appsets.name }}-{{`{{env}}`}}
-      annotations:
-        argocd.argoproj.io/sync-options: CreateNamespace=true
     spec:
       project: appsets
       source:
@@ -30,4 +28,11 @@ spec:
         automated:
           prune: true
           selfHeal: true
+        syncOptions:
+          - Validate=true                      # Disables resource validation (equivalent to 'kubectl apply --validate=false'). Default: true
+          - ApplyOutOfSyncOnly=true            # If the sync option is set Argo CD will sync only out-of-sync resources. Default: false
+          - PrunePropagationPolicy=foreground  # Supported policies are background, foreground and orphan. Default: foreground
+          - PruneLast=false                    # Allow the ability for resource pruning to happen as a final, implicit wave of a sync operation. Default: false
+          - Replace=false                      # If the sync option is set the Argo CD will use kubectl replace or kubectl create command to apply changes. Default: false
+          - CreateNamespace=true               # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster. Default: false
 {{- end }}
