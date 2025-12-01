@@ -8,9 +8,7 @@ applications:
   - name: cert-manager
     namespace: cert-manager
     ignoreDifferences:
-      - group: admissionregistration.k8s.io
-        kind: ValidatingWebhookConfiguration
-        # optional: restrict to one specific webhook config
-        # name: my-webhook-config
-        jqPathExpressions:
-        - '.webhooks[].namespaceSelector.matchExpressions'
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      jsonPointers:
+      - /webhooks/0/namespaceSelector/matchExpressions
